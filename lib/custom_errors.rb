@@ -10,9 +10,10 @@ class Person
     if person.class != Person
       begin
         raise YourCustomError
-        rescue YourCustomError
+        rescue YourCustomError => error
+        puts error.message
       end
-    raise PartnerError
+   
   else 
     person.partner = self 
   end 
@@ -21,10 +22,10 @@ end
    
 
     class PartnerError < StandardError
-  def message 
-    "you must give the get_married method an argument of an instance of the person class!"
+      def message 
+         "you must give the get_married method an argument of an instance of the person class!"
     end
-
+end
 end
 
 beyonce = Person.new("Beyonce")
